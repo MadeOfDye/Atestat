@@ -14,10 +14,10 @@ public class CharController : MonoBehaviour
     private void Update()
     {
         CheckGround();
-        Gravity();
+       Gravity();
         GetInputs();
         CalculateDirection();
-        TehJump();
+      TehJump();
         if (Mathf.Abs(_forward)<1 && Mathf.Abs(_sideways)<1)
         {
             return;
@@ -95,12 +95,13 @@ public class CharController : MonoBehaviour
     //Setting the boolean and applying gravity
     private bool grounded = false;
     public float gravity = 12.5f;
+    private  float verticalVelocity; 
     void Gravity()
     {
         if(grounded == false)
         {
             gravity = 12.5f;
-            transform.position -= new Vector3(0, gravity*Time.deltaTime, 0);
+           transform.position -= new Vector3(0, gravity*Time.deltaTime, 0);
             crackSpeed /= 2.2f;
         }
         else
@@ -185,28 +186,32 @@ public class CharController : MonoBehaviour
     private bool jumped = false;
     public float jumpForce = 0.6f;
     public float jumpSpeed = 0.5f;
+    private float currentLerpTime;
+    private float lerpTime = 1f;
     private Vector3 jumpHeight;
-    private void TehJump()
+private void TehJump()
     {
        bool canJump = false;
-        if(grounded)
-        {
-            jumped = false;
-        }
+       
         canJump = !Physics.Raycast(new Ray(transform.position, Vector3.up), height, eButPlayer);
+     
         if (grounded && canJump)
         {
+            Vector3 jumpHeight = transform.position + Vector3.up * jumpForce;
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                transform.position = Vector3.Lerp(transform.position,transform.position + Vector3.up * jumpForce * height,jumpSpeed);
-                jumped = true;
+                currentLerpTime = 0f;
+               
             }
-        }
-        else if(!grounded)
-        {
-            //jumpHeight = Vector3.zero;
-        }
+            currentLerpTime += Time.deltaTime;
+            if(currentLerpTime>lerpTime)
+            {
+                currentLerpTime = lerpTime;
+            }
+            float perc =currentLerpTime / lerpTime;
 
+            transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.up * jumpForce * Time.deltaTime, jumpSpeed);
+        }
     }
     #endregion
 }

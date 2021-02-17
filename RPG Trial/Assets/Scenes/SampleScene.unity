@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e22a80f7f3583f64f97e13802ea5500f,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -697,6 +698,7 @@ GameObject:
   - component: {fileID: 1481036524}
   - component: {fileID: 1481036523}
   - component: {fileID: 1481036522}
+  - component: {fileID: 1481036525}
   - component: {fileID: 1481036521}
   m_Layer: 0
   m_Name: Capsule
@@ -780,6 +782,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1481036525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481036520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4715c8d41b58a534eb73b51c128a6db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravity: 0
 --- !u!1 &1549588920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,8 +1024,8 @@ MonoBehaviour:
   groundPoint: 2.1
   groundCheckRadius: 0.89
   smoothFall: 15.04
-  jumpForce: 2.13
-  jumpSpeed: 20
+  jumpForce: 3.42
+  jumpSpeed: 0.5
 --- !u!65 &1952459034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1020,7 +1035,7 @@ BoxCollider:
   m_GameObject: {fileID: 1952459030}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.76, y: 1, z: 0.76}
   m_Center: {x: 0, y: 0, z: 0}

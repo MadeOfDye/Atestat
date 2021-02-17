@@ -17,7 +17,7 @@ De daugat vizual primar
 -modele 3d caracter
 -modele 3d nivel(e)
 -animatii
--modele 3d obiecte
+-modele 3d obiecte/2 - lori
 -inverse kinematics
 
 de adaugat secundar
@@ -35,3 +35,6 @@ de reparat:
 ///
 in sumar jocul se desfasoara pe mai multe nivele , telul final este sa colectezi un obiect de la finalul nivelului(temporar?)
 ///
+
+https://www.youtube.com/watch?v=HwdweCX5aMI&ab_channel=GameDevGuide
+https://www.youtube.com/watch?v=7KiK0Aqtmzc&ab_channel=BoardToBitsGames

@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
             rotation = Quaternion.Euler(NewMove.y, NewMove.x, 0f);
         }
 
-        // transform.position = player.position + rotation * offsetPos;
+        //transform.position = player.position + rotation * offsetPos;
         CollisionCheck(player.position + rotation * offsetPos);
         WallCheck();
     }
@@ -67,8 +67,8 @@ public class CameraController : MonoBehaviour
         _Yaxis -= Input.GetAxis("Mouse Y");
         mouseMov = new Vector2(_Xaxis, _Yaxis);
         mouseMov = Vector2.Scale(mouseMov, new Vector2(sensX, sensY));
-        NewMove.x = Mathf.Lerp(NewMove.x, mouseMov.x, smooth);
-        NewMove.y = Mathf.Lerp(NewMove.y, mouseMov.y, smooth);
+        NewMove.x = Mathf.Lerp(NewMove.x, mouseMov.x, smooth );
+        NewMove.y = Mathf.Lerp(NewMove.y, mouseMov.y, smooth );
     }
 
     //Generic clamp function used for the Yaxis
@@ -157,7 +157,6 @@ public class CameraController : MonoBehaviour
         }
 
     }
-
     private void FullTransparency()
     {
         if(changeTransparency)

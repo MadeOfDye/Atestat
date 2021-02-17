@@ -13,7 +13,6 @@ public class CharController : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawLine(transform.position, transform.position + new Vector3(0, height, 0),Color.red,1);
         CheckGround();
         Gravity();
         GetInputs();
@@ -29,9 +28,9 @@ public class CharController : MonoBehaviour
         Movement();
         TheCollision();
     }
-
+    #region movement
     //Setting the raw input values into float Variables
-   private float _forward;
+    private float _forward;
     private float _sideways;
     void GetInputs()
     {
@@ -84,21 +83,29 @@ public class CharController : MonoBehaviour
    private Vector3 movement;
     void Movement()
     {
+        
         movement = forward * crackSpeed * Time.deltaTime;
+        
         transform.position += movement;
     }
+    #endregion
+
+    [Header("Gravity")]
+    #region gravity
     //Setting the boolean and applying gravity
-   private bool grounded = false;
+    private bool grounded = false;
     public float gravity = 12.5f;
     void Gravity()
     {
         if(grounded == false)
         {
-            transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
-            crackSpeed /= 2.5f;
+            gravity = 12.5f;
+            transform.position -= new Vector3(0, gravity*Time.deltaTime, 0);
+            crackSpeed /= 2.2f;
         }
         else
         {
+            gravity = 0;
             crackSpeed = 10f;
             return;
         }
@@ -141,13 +148,16 @@ public class CharController : MonoBehaviour
                 if (jumped == false)
                 {
                     transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (groundHit.point.y + height / 2), transform.position.z), smoothFall * Time.deltaTime);
-                    Debug.Log("Here");
+                    
                 }
                 break;
             }
         }
 
     }
+    #endregion
+
+    #region collision
     //yes I am programming the collision by hand, no it doesn't work as intended, what of it?
     BoxCollider boxCol;
     void TheCollision()
@@ -168,10 +178,14 @@ public class CharController : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region Jump
     //Leave the ground and go up in the air hopefully
-   private bool jumped = false;
+    private bool jumped = false;
     public float jumpForce = 0.6f;
     public float jumpSpeed = 0.5f;
+    private Vector3 jumpHeight;
     private void TehJump()
     {
        bool canJump = false;
@@ -180,12 +194,19 @@ public class CharController : MonoBehaviour
             jumped = false;
         }
         canJump = !Physics.Raycast(new Ray(transform.position, Vector3.up), height, eButPlayer);
-        if(grounded && canJump)
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (grounded && canJump)
         {
-            transform.position =Vector3.Lerp(transform.position,transform.position +  (Vector3.up * jumpForce * height),jumpSpeed * Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                transform.position = Vector3.Lerp(transform.position,transform.position + Vector3.up * jumpForce * height,jumpSpeed);
                 jumped = true;
+            }
+        }
+        else if(!grounded)
+        {
+            //jumpHeight = Vector3.zero;
         }
 
     }
+    #endregion
 }

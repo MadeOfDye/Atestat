@@ -21,6 +21,7 @@ De daugat vizual primar
 -inverse kinematics
 
 de adaugat secundar
+-momentum
 -linear drag
 -ui gfx
 -dialog

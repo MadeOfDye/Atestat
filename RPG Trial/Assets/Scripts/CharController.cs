@@ -17,7 +17,7 @@ public class CharController : MonoBehaviour
        Gravity();
         GetInputs();
         CalculateDirection();
-      TehJump();
+      TehJumpCheck();
         if (Mathf.Abs(_forward)<1 && Mathf.Abs(_sideways)<1)
         {
             return;
@@ -101,7 +101,7 @@ public class CharController : MonoBehaviour
         if(grounded == false)
         {
             gravity = 12.5f;
-           transform.position -= new Vector3(0, gravity*Time.deltaTime, 0);
+           transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
             crackSpeed /= 2.2f;
         }
         else
@@ -186,32 +186,31 @@ public class CharController : MonoBehaviour
     private bool jumped = false;
     public float jumpForce = 0.6f;
     public float jumpSpeed = 0.5f;
-    private float currentLerpTime;
-    private float lerpTime = 1f;
-    private Vector3 jumpHeight;
-private void TehJump()
+ private void TehJumpCheck()
     {
        bool canJump = false;
-       
         canJump = !Physics.Raycast(new Ray(transform.position, Vector3.up), height, eButPlayer);
-     
         if (grounded && canJump)
         {
-            Vector3 jumpHeight = transform.position + Vector3.up * jumpForce;
+            jumpHeight = transform.position + Vector3.up * jumpForce;
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                currentLerpTime = 0f;
-               
+                StartCoroutine(TehActualJump());
             }
-            currentLerpTime += Time.deltaTime;
-            if(currentLerpTime>lerpTime)
-            {
-                currentLerpTime = lerpTime;
-            }
-            float perc =currentLerpTime / lerpTime;
-
-            transform.position = Vector3.Lerp(transform.position, transform.position + Vector3.up * jumpForce * Time.deltaTime, jumpSpeed);
         }
+        
     }
+    Vector3 jumpHeight;
+    Vector3 refVel;
+    IEnumerator TehActualJump()
+{
+        while ((jumpHeight.y - transform.position.y) > 5)
+        {
+            //Debug.Log(jumpHeight.y - transform.position.y);
+            transform.position = Vector3.SmoothDamp(transform.position, jumpHeight,ref refVel, jumpSpeed);
+            yield return null;
+        }
+}
     #endregion
 }
+

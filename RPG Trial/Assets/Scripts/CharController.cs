@@ -10,21 +10,20 @@ public class CharController : MonoBehaviour
         cam = Camera.main.transform;
         boxCol = GetComponent<BoxCollider>();
     }
-
     private void Update()
     {
         CheckGround();
-       Gravity();
+        Gravity();
         GetInputs();
         CalculateDirection();
-      TehJumpCheck();
-        if (Mathf.Abs(_forward)<1 && Mathf.Abs(_sideways)<1)
+        TehJumpCheck();
+        if (Mathf.Abs(_forward) < 1 && Mathf.Abs(_sideways) < 1)
         {
+            forward = Vector3.zero;
             return;
         }
         Rotation();
         CalculatingForward();
-        
         Movement();
         TheCollision();
     }
@@ -37,7 +36,6 @@ public class CharController : MonoBehaviour
         _forward = Input.GetAxisRaw("Vertical");
         _sideways = Input.GetAxisRaw("Horizontal");
     }
-
     //Calculate the orientation of the character(from the above perspective) dependent on the camera angle
     private float _angle;
     void CalculateDirection()
@@ -52,40 +50,39 @@ public class CharController : MonoBehaviour
     void Rotation()
     {
         playerRot = Quaternion.Euler(0, _angle, 0);
-        transform.rotation = Quaternion.Lerp(transform.rotation, playerRot, smoothRot*Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, playerRot, smoothRot * Time.deltaTime);
     }
     //Calculating the forward vector for slopes
     private Vector3 forward;
     private RaycastHit hit;
     void CalculatingForward()
     {
-        if(!grounded)
+        if (!grounded)
         {
-            forward = transform.forward;
+          //  forward = transform.forward;
             return;
         }
         else
         {
             Ray ray = new Ray(transform.TransformPoint(liftPoint), Vector3.down);
-            Physics.SphereCast(ray, 0.3f,out hit, groundPoint, eButPlayer);
-            if (Vector3.Cross(hit.normal, -transform.right).y < 0.65f) 
+            Physics.SphereCast(ray, 0.3f, out hit, groundPoint, eButPlayer);
+            if (Vector3.Cross(hit.normal, -transform.right).y < 0.65f)
             {
                 forward = Vector3.Cross(hit.normal, -transform.right);
             }
             else
             {
-               forward = Vector3.zero;
+                forward = Vector3.zero;
             }
         }
     }
     //this is the movement part, where the actual movement happens
-    public float crackSpeed  = 10f;
-   private Vector3 movement;
+    public float methSpeed = 10f;
+    private float crackSpeed;
+    private Vector3 movement;
     void Movement()
     {
-        
-        movement = forward * crackSpeed * Time.deltaTime;
-        
+        movement = forward * crackSpeed;
         transform.position += movement;
     }
     #endregion
@@ -95,33 +92,32 @@ public class CharController : MonoBehaviour
     //Setting the boolean and applying gravity
     private bool grounded = false;
     public float gravity = 12.5f;
-    private  float verticalVelocity; 
+    private float verticalVelocity;
     void Gravity()
     {
-        if(grounded == false)
+        if (grounded == false)
         {
             gravity = 12.5f;
-           transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
-            crackSpeed /= 2.2f;
+            transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
+            crackSpeed = methSpeed / 4;
         }
         else
         {
             gravity = 0;
-            crackSpeed = 10f;
+            crackSpeed = methSpeed;
             return;
         }
     }
     //checking and confirming solid objects beneath the player
     public float height = 2f;
-    public Vector3 liftPoint = new Vector3(0, 1f, 0);  
+    public Vector3 liftPoint = new Vector3(0, 1f, 0);
     public LayerMask eButPlayer;
     public float groundPoint = 5f;
     void CheckGround()
     {
-        
         Ray ray = new Ray(transform.TransformPoint(liftPoint), Vector3.down);
         RaycastHit tempHit = new RaycastHit();
-        if (Physics.SphereCast(ray, 0.3f,out tempHit,groundPoint, eButPlayer))
+        if (Physics.SphereCast(ray, 0.3f, out tempHit, groundPoint, eButPlayer))
         {
             GroundConfirm(tempHit);
         }
@@ -138,23 +134,21 @@ public class CharController : MonoBehaviour
     void GroundConfirm(RaycastHit temphit)
     {
         Collider[] col = new Collider[3];
-        int num = Physics.OverlapSphereNonAlloc(transform.TransformPoint(groundCheckPoint),groundCheckRadius, col,eButPlayer);
+        int num = Physics.OverlapSphereNonAlloc(transform.TransformPoint(groundCheckPoint), groundCheckRadius, col, eButPlayer);
         //grounded = false;
-        for(int i=0;i<num;i++)
+        for (int i = 0; i < num; i++)
         {
-            if(col[i] == temphit.collider)
+            if (col[i] == temphit.collider)
             {
                 groundHit = temphit;
                 grounded = true;
                 if (jumped == false)
                 {
                     transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, (groundHit.point.y + height / 2), transform.position.z), smoothFall * Time.deltaTime);
-                    
                 }
                 break;
             }
         }
-
     }
     #endregion
 
@@ -165,7 +159,7 @@ public class CharController : MonoBehaviour
     {
         Collider[] overlaps = new Collider[4];
         int num = Physics.OverlapBoxNonAlloc(transform.TransformPoint(boxCol.center), boxCol.size / 2, overlaps, transform.rotation, eButPlayer, QueryTriggerInteraction.UseGlobal);
-        for(int i=0;i<num;i++)
+        for (int i = 0; i < num; i++)
         {
             //Transform t = overlaps[i].transform;
             Vector3 dir;
@@ -175,7 +169,7 @@ public class CharController : MonoBehaviour
                 Vector3 penetration = dir * dist;
                 Vector3 movementProjected = Vector3.Project(movement, -dir);
                 transform.position = transform.position + penetration;
-                     movement -= movementProjected;
+                movement -= movementProjected;
             }
         }
     }
@@ -186,11 +180,13 @@ public class CharController : MonoBehaviour
     private bool jumped = false;
     public float jumpForce = 0.6f;
     public float jumpSpeed = 0.5f;
- private void TehJumpCheck()
+    private void TehJumpCheck()
     {
-       bool canJump = false;
+        bool canJump = false;
         canJump = !Physics.Raycast(new Ray(transform.position, Vector3.up), height, eButPlayer);
-        if (grounded && canJump)
+
+
+   if (grounded && canJump)
         {
             jumpHeight = transform.position + Vector3.up * jumpForce;
             if (Input.GetKeyDown(KeyCode.Space))
@@ -198,19 +194,21 @@ public class CharController : MonoBehaviour
                 StartCoroutine(TehActualJump());
             }
         }
-        
     }
     Vector3 jumpHeight;
     Vector3 refVel;
+    public float jumpLength;
     IEnumerator TehActualJump()
-{
+    {
         while ((jumpHeight.y - transform.position.y) > 5)
         {
             //Debug.Log(jumpHeight.y - transform.position.y);
-            transform.position = Vector3.SmoothDamp(transform.position, jumpHeight,ref refVel, jumpSpeed);
+            transform.position = Vector3.SmoothDamp(transform.position, jumpHeight + forward * jumpLength, ref refVel, jumpSpeed);
             yield return null;
         }
-}
+    }
     #endregion
+
 }
+
 

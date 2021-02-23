@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 701124098}
   - component: {fileID: 701124097}
   - component: {fileID: 701124096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ MonoBehaviour:
   smallerDToP: 1
   notPlayer:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   pitchLock: 0
   player: {fileID: 1952459031}
   camHeight: 2
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 1275892496}
   - component: {fileID: 1275892495}
   - component: {fileID: 1275892494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 1481036522}
   - component: {fileID: 1481036525}
   - component: {fileID: 1481036521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1085,6 +1085,7 @@ GameObject:
   - component: {fileID: 1952459031}
   - component: {fileID: 1952459034}
   - component: {fileID: 1952459032}
+  - component: {fileID: 1952459033}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1121,18 +1122,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothRot: 14.61
-  crackSpeed: 10
+  methSpeed: 0.1
   gravity: 12.5
   height: 2
   liftPoint: {x: 0, y: 0.58, z: 0}
   eButPlayer:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   groundPoint: 2.1
   groundCheckRadius: 0.89
   smoothFall: 15.04
   jumpForce: 8
   jumpSpeed: 0.3
+  jumpLength: 5
+--- !u!114 &1952459033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952459030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1d10fbf15b8e34a977779ac6655996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 003741cf570a960409d82751effc1fb0, type: 2}
+  viewCamera: {fileID: 963194228}
+  interactionDistance: 5
+  layersToRaycast:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!65 &1952459034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1159,7 +1179,7 @@ GameObject:
   - component: {fileID: 2125700011}
   - component: {fileID: 2125700010}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1234,7 +1254,7 @@ Transform:
   m_GameObject: {fileID: 2125700009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23, y: 27.5, z: 30.66}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4

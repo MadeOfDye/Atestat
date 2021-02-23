@@ -4,11 +4,10 @@ board to bits -youtube
 renaissance coders - youtube
 
 De adaugat tehnic primar:
--functional jump
--platforms(moving or otherwise)
 -interaction system
--inventory system
 -ui and menus
+-inventory system
+-looting system
 -scene manager
 -hub
 -win and lose conditions
@@ -23,11 +22,15 @@ De daugat vizual primar
 de adaugat secundar
 -momentum
 -linear drag
+-platforms(moving or otherwise)
 -ui gfx
 -dialog
 -cutscene
 -poveste
 -better jump(higher gravity once on the landing + longer jump on the button hold)
+-gravity change puzzle
+-combat
+-functional jump
 
 de reparat:
 -jittery overall movement

@@ -15,10 +15,8 @@ public class RaycastData : ScriptableObject
 		if (HitTransform == transform) return false;
 		return true;
 	}
-
 	public Transform HitTransform { private set; get; }
 	public RaycastHit? Hit { private set; get; }
-
 	public void UpdateData(RaycastHit? _hit)
 	{
 		HitTransform = _hit.Value.transform;

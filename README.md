@@ -4,7 +4,7 @@ board to bits -youtube
 renaissance coders - youtube
 
 De adaugat tehnic primar:
--interaction system
+-scene manager
 -ui and menus
 -inventory system
 -looting system
@@ -20,6 +20,7 @@ De daugat vizual primar
 -inverse kinematics
 
 de adaugat secundar
+
 -momentum
 -linear drag
 -platforms(moving or otherwise)
@@ -29,8 +30,11 @@ de adaugat secundar
 -poveste
 -better jump(higher gravity once on the landing + longer jump on the button hold)
 -gravity change puzzle
+-DS focus camera
 -combat
 -functional jump
+--interaction system
+-smoothing for dumber computers
 
 de reparat:
 -jittery overall movement
@@ -38,6 +42,7 @@ de reparat:
 
 ///
 in sumar jocul se desfasoara pe mai multe nivele , telul final este sa colectezi un obiect de la finalul nivelului(temporar?)
+Nvm ii un RPG deci tre sa omori ceva
 ///
 
 https://www.youtube.com/watch?v=HwdweCX5aMI&ab_channel=GameDevGuide

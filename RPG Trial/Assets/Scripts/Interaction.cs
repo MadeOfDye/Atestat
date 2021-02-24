@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Interaction : MonoBehaviour
 {
 	[SerializeField] private RaycastData data = null;
@@ -13,7 +12,6 @@ public class Interaction : MonoBehaviour
 	{
 		data.Reset();
 	}
-
 	void Update()
 	{
 		if (Time.frameCount % 4 == 0)
@@ -30,10 +28,11 @@ public class Interaction : MonoBehaviour
 			else
 			{
 				if (data.HitTransform)
+				{
 					data.Reset();
+				}
 			}
 		}
-
 	}
 	private RaycastHit? DoRayCasting()
 	{

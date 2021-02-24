@@ -203,7 +203,7 @@ public class CharController : MonoBehaviour
         while ((jumpHeight.y - transform.position.y) > 5)
         {
             //Debug.Log(jumpHeight.y - transform.position.y);
-            transform.position = Vector3.SmoothDamp(transform.position, jumpHeight + forward * jumpLength, ref refVel, jumpSpeed);
+            transform.position = Vector3.SmoothDamp(transform.position,jumpHeight + forward * jumpLength, ref refVel, jumpSpeed);
             yield return null;
         }
     }

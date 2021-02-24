@@ -1088,7 +1088,7 @@ GameObject:
   - component: {fileID: 1952459033}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1134,7 +1134,7 @@ MonoBehaviour:
   smoothFall: 15.04
   jumpForce: 8
   jumpSpeed: 0.3
-  jumpLength: 5
+  jumpLength: 1
 --- !u!114 &1952459033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 003741cf570a960409d82751effc1fb0, type: 2}
   viewCamera: {fileID: 963194228}
-  interactionDistance: 5
+  interactionDistance: 12
   layersToRaycast:
     serializedVersion: 2
     m_Bits: 512

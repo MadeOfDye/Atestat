@@ -4,7 +4,6 @@ board to bits -youtube
 renaissance coders - youtube
 
 De adaugat tehnic primar:
--scene manager
 -ui and menus
 -inventory system
 -looting system

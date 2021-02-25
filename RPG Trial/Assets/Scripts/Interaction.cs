@@ -12,11 +12,19 @@ public class Interaction : MonoBehaviour
 	{
 		data.Reset();
 	}
+	
 	void Update()
 	{
-		if (Time.frameCount % 4 == 0)
+		Debug.DrawRay(viewCamera.position, viewCamera.forward, Color.Lerp(Color.cyan, Color.magenta,0.5f),10f);
+		//if (Time.frameCount % 4 == 0)
+		//{
+		if(data.interactible == true)
 		{
-
+			if(Input.GetKeyDown(KeyCode.E))
+			{
+				ManagerialTroubles.LoadSceneLevel();
+			}
+		}
 			RaycastHit? hit = DoRayCasting();
 			if (hit.HasValue)
 			{
@@ -30,18 +38,16 @@ public class Interaction : MonoBehaviour
 				if (data.HitTransform)
 				{
 					data.Reset();
+				data.interactible = false;
 				}
-			}
+			//}
 		}
 	}
 	private RaycastHit? DoRayCasting()
 	{
 		Ray ray = new Ray(viewCamera.position, viewCamera.forward);
-
 		RaycastHit hit;
-
-		bool hashit = Physics.SphereCast(ray, 0.5f, out hit, interactionDistance, layersToRaycast);
-
+		bool hashit = Physics.SphereCast(ray, 2.3f, out hit, interactionDistance, layersToRaycast);
 		if (hashit)
 		{
 			return hit;

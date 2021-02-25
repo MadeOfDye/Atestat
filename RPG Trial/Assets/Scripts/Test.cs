@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-	public float gravity;
+    public float gravity;
     float lerpTime = 1f;
     float currentLerpTime;
 
@@ -27,22 +27,24 @@ public class Test : MonoBehaviour
         {
             currentLerpTime = 0f;
         }
-            //increment timer once per frame
-            currentLerpTime += Time.deltaTime;
-            if (currentLerpTime > lerpTime)
+        //increment timer once per frame
+        currentLerpTime += Time.deltaTime;
+        if (currentLerpTime > lerpTime)
+        {
+            currentLerpTime = lerpTime;
+        }
+        //lerp!
+        float perc = currentLerpTime / lerpTime;
+        transform.position = Vector3.Lerp(startPos, endPos, perc);
+        /*if (HitTransform.name == "SceneChanger")
+        {
+            if (Input.GetKey(KeyCode.E))
             {
-                currentLerpTime = lerpTime;
+                ManagerialTroubles.LoadSceneLevel();
             }
-
-
-            //lerp!
-            float perc = currentLerpTime / lerpTime;
-            transform.position = Vector3.Lerp(startPos, endPos, perc);
-        
-
-       
+        }
+        */
     }
-
 }
 
 

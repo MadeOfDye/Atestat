@@ -99,7 +99,7 @@ public class CharController : MonoBehaviour
         {
             gravity = 12.5f;
             transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
-            crackSpeed = methSpeed / 4;
+            crackSpeed = methSpeed / 2;
         }
         else
         {

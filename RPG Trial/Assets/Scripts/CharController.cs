@@ -99,7 +99,7 @@ public class CharController : MonoBehaviour
         {
             gravity = 12.5f;
             transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
-            crackSpeed = methSpeed / 2;
+           // crackSpeed = methSpeed / 2;
         }
         else
         {
@@ -200,10 +200,11 @@ public class CharController : MonoBehaviour
     public float jumpLength;
     IEnumerator TehActualJump()
     {
-        while ((jumpHeight.y - transform.position.y) > 5)
+        while ((jumpHeight.y - transform.position.y) > 0.1f)
         {
             //Debug.Log(jumpHeight.y - transform.position.y);
-            transform.position = Vector3.SmoothDamp(transform.position,jumpHeight + forward * jumpLength, ref refVel, jumpSpeed);
+            // transform.position = Vector3.SmoothDamp(transform.position,jumpHeight + forward * jumpLength, ref refVel, jumpSpeed);
+            transform.position +=forward + Vector3.up * jumpForce;
             yield return null;
         }
     }

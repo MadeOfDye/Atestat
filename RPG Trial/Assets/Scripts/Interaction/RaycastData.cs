@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "RaycastData" , menuName = "RPGTrial/new RaycastData")]
 public class RaycastData : ScriptableObject
 {
@@ -22,9 +21,7 @@ public class RaycastData : ScriptableObject
 	{
 		HitTransform = _hit.Value.transform;
 		Hit = _hit;
-		Debug.Log(HitTransform.name);
 		interactible = true;
-		
 		}
 		
 	public void Reset()

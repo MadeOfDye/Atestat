@@ -63,14 +63,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraTest.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interaction.cs" />
     <Compile Include="Assets\Scripts\Interaction\RaycastData.cs" />
+    <Compile Include="Assets\Scripts\Items\DefaultItem.cs" />
     <Compile Include="Assets\Scripts\Items\ItemObject.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ManagerialTroubles.cs" />
     <Compile Include="Assets\Scripts\Managers\MenuInteraction.cs" />
     <Compile Include="Assets\Scripts\Movement\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Movement\CameraTest.cs" />
     <Compile Include="Assets\Scripts\Movement\CharController.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
     <Reference Include="UnityEngine">

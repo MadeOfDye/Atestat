@@ -796,6 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a73d89e330d634e9638930f52318c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nextScene: 
+  _player: {fileID: 0}
 --- !u!4 &1399981989
 Transform:
   m_ObjectHideFlags: 0
@@ -994,7 +996,7 @@ PrefabInstance:
     - target: {fileID: 443712433247970521, guid: 127ff6bc52723bb47a4f260d5fdd7715,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.12
+      value: 21.9
       objectReference: {fileID: 0}
     - target: {fileID: 443712433247970521, guid: 127ff6bc52723bb47a4f260d5fdd7715,
         type: 3}
@@ -1004,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 443712433247970521, guid: 127ff6bc52723bb47a4f260d5fdd7715,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.02
+      value: 29.47
       objectReference: {fileID: 0}
     - target: {fileID: 443712433247970521, guid: 127ff6bc52723bb47a4f260d5fdd7715,
         type: 3}

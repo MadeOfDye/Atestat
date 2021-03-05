@@ -6,10 +6,14 @@ public enum Type
 {
     Food,
     Equipment,
-    Miscellaneous
+    Default
 }
 
 public abstract class ItemObject : ScriptableObject
 {
     public GameObject prefab;
+    public Type type;
+
+    [TextArea(15, 20)]
+    public string description;
 }

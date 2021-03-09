@@ -5,9 +5,15 @@ using UnityEngine;
 public class CharController : MonoBehaviour
 {
     private Transform cam;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this. gameObject);
+        cam = GameObject.Find("Main Camera").transform;
+    }
     private void Start()
     {
-        cam = Camera.main.transform;
+        //cam = Camera.main.transform;
         boxCol = GetComponent<BoxCollider>();
     }
     private void Update()

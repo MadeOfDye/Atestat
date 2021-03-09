@@ -13,11 +13,18 @@ public class CameraController : MonoBehaviour
     public float smallerDToP = 1;
     public LayerMask notPlayer;
     public bool pitchLock = false;
-   
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        player = GameObject.Find("Player").transform;
+        targetRend = GameObject.Find("Gfx").GetComponent<MeshRenderer>();
+    }
     void Start()
     {
+        Debug.Log("Here");
         Cursor.lockState = CursorLockMode.Locked;
-       // player = GameObject.Find("Player").transform;
+       
     }
 
     void Update()

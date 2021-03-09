@@ -15,9 +15,8 @@ public class Interaction : MonoBehaviour
 	
 	void Update()
 	{
-		Debug.DrawRay(viewCamera.position, viewCamera.forward, Color.Lerp(Color.cyan, Color.magenta,0.5f),10f);
-		//if (Time.frameCount % 4 == 0)
-		//{
+		if (Time.frameCount % 4 == 0)
+		{
 		if(data.interactible == true)
 		{
 			if(Input.GetKeyDown(KeyCode.E))
@@ -40,7 +39,7 @@ public class Interaction : MonoBehaviour
 					data.Reset();
 				data.interactible = false;
 				}
-			//}
+			}
 		}
 	}
 	private RaycastHit? DoRayCasting()

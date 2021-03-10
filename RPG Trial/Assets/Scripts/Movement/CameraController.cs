@@ -14,17 +14,11 @@ public class CameraController : MonoBehaviour
     public LayerMask notPlayer;
     public bool pitchLock = false;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-        player = GameObject.Find("Player").transform;
-        targetRend = GameObject.Find("Gfx").GetComponent<MeshRenderer>();
-    }
     void Start()
     {
-        Debug.Log("Here");
+        player = GameObject.FindWithTag("Player").transform;
+      targetRend = player.Find("Gfx").GetComponent<MeshRenderer>();
         Cursor.lockState = CursorLockMode.Locked;
-       
     }
 
     void Update()
@@ -47,7 +41,6 @@ public class CameraController : MonoBehaviour
         if (!pitchLock)
         {
             rotation = Quaternion.Euler(NewMove.y, NewMove.x, 0f);
-           
         }
         else
         {

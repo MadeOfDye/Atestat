@@ -8,7 +8,7 @@ public  class ManagerialTroubles
   public  static void LoadNextScene()
     {
        
-        SceneManager.LoadScene ("TestLevel");
+        SceneManager.LoadScene ("TestScene");
         
     }
  

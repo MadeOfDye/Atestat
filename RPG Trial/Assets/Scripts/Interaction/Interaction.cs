@@ -4,12 +4,13 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
 	[SerializeField] private RaycastData data = null;
-	[SerializeField] private Transform viewCamera = null;
+	public Transform viewCamera = null;
 	[SerializeField] private float interactionDistance = 5f;
 	[SerializeField] private LayerMask layersToRaycast = 0;
 
 	void Start()
 	{
+		viewCamera = Camera.main.transform;
 		data.Reset();
 	}
 	

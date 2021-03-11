@@ -342,7 +342,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d891574844c77704bad8680531599c51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -583,6 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4715c8d41b58a534eb73b51c128a6db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream:RPG Trial/Assets/Scenes/SampleScene.unity
   gravity: 0
 --- !u!1 &963194225
 GameObject:
@@ -701,6 +702,8 @@ MonoBehaviour:
   Ymin: -25
   Ymax: 60
   transSpeed: 16
+=======
+>>>>>>> Stashed changes:RPG Trial/Assets/Scenes/TestScene.unity
 --- !u!1 &1275892493
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,8 +790,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275892493}
+<<<<<<< Updated upstream:RPG Trial/Assets/Scenes/SampleScene.unity
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.32001, y: 2.32, z: 28.46262}
+=======
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.891321, y: -22.74, z: -11.610279}
+>>>>>>> Stashed changes:RPG Trial/Assets/Scenes/TestScene.unity
   m_LocalScale: {x: 9, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -807,8 +815,14 @@ GameObject:
   - component: {fileID: 1481036522}
   - component: {fileID: 1481036525}
   - component: {fileID: 1481036521}
+<<<<<<< Updated upstream:RPG Trial/Assets/Scenes/SampleScene.unity
   m_Layer: 0
   m_Name: Capsule
+=======
+  - component: {fileID: 1481036526}
+  m_Layer: 9
+  m_Name: Item
+>>>>>>> Stashed changes:RPG Trial/Assets/Scenes/TestScene.unity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -901,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4715c8d41b58a534eb73b51c128a6db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream:RPG Trial/Assets/Scenes/SampleScene.unity
   gravity: 0
 --- !u!1 &1549588920
 GameObject:
@@ -1109,11 +1124,15 @@ Transform:
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1952459032
+=======
+--- !u!114 &1481036526
+>>>>>>> Stashed changes:RPG Trial/Assets/Scenes/TestScene.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:RPG Trial/Assets/Scenes/SampleScene.unity
   m_GameObject: {fileID: 1952459030}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1146,6 +1165,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.76, y: 1, z: 0.76}
   m_Center: {x: 0, y: 0, z: 0}
+=======
+  m_GameObject: {fileID: 1481036520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e0299773d0d764fb09d38b2b95368f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 2692717905a3e984da8f245d001939b7, type: 2}
+>>>>>>> Stashed changes:RPG Trial/Assets/Scenes/TestScene.unity
 --- !u!1 &2125700009
 GameObject:
   m_ObjectHideFlags: 0

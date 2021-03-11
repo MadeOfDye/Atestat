@@ -63,9 +63,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraTest.cs" />
-    <Compile Include="Assets\Scripts\CharController.cs" />
+    <Compile Include="Assets\Scripts\Interaction\Interaction.cs" />
+    <Compile Include="Assets\Scripts\Interaction\RaycastData.cs" />
+    <Compile Include="Assets\Scripts\ItemScripts\DefaultItem.cs" />
+    <Compile Include="Assets\Scripts\ItemScripts\FoodObject.cs" />
+    <Compile Include="Assets\Scripts\ItemScripts\ItemObject.cs" />
+    <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ManagerialTroubles.cs" />
+    <Compile Include="Assets\Scripts\Managers\MenuInteraction.cs" />
+    <Compile Include="Assets\Scripts\Movement\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Movement\CharController.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/12c/Unity/2019.4.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-<<<<<<< Updated upstream
 	public float gravity;
     float lerpTime = 1f;
     float currentLerpTime;
@@ -43,7 +42,6 @@ public class Test : MonoBehaviour
 
        
     }
-=======
     /*public RaycastData data = new RaycastData();
     public float range = 5f;
       public float gravity;
@@ -88,9 +86,8 @@ public class Test : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, range);
         //create a sphere in which the interaction will take effect
+    }
     }*/
-}
->>>>>>> Stashed changes
 
 }
 

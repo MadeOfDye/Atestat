@@ -66,15 +66,15 @@
   <ItemGroup>
     <Compile Include="Assets\Inventory.cs" />
     <Compile Include="Assets\Item.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraTest.cs" />
-    <Compile Include="Assets\Scripts\CharController.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interaction.cs" />
     <Compile Include="Assets\Scripts\Inventory\Scripts\InventoryObject.cs" />
     <Compile Include="Assets\Scripts\ItemScripts\EquipmentItem.cs" />
     <Compile Include="Assets\Scripts\ItemScripts\FoodItem.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ManagerialTroubles.cs" />
+    <Compile Include="Assets\Scripts\Movement\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Movement\CharController.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

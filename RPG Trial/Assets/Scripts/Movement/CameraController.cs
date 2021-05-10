@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
-      targetRend = player.Find("Gfx").GetComponent<MeshRenderer>();
+     // targetRend = player.Find("Basemesh").GetComponent<MeshRenderer>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -117,7 +117,7 @@ public class CameraController : MonoBehaviour
         {
             Vector3 normalData = hit.normal * wallPush;
             Vector3 p = hit.point + normalData;
-            TransparencyCheck();
+           // TransparencyCheck();
             if(Vector3.Distance(Vector3.Lerp(transform.position,p,moveSpeed*Time.deltaTime),player.position) <= smallerDToP)
             {
 
@@ -128,13 +128,13 @@ public class CameraController : MonoBehaviour
             }
             return;
         }
-        FullTransparency();
+       // FullTransparency();
 
         transform.position = Vector3.Lerp(transform.position, retPoint, returnSpeed * Time.deltaTime);
         pitchLock = false;
     }
     public float transSpeed = 0.6f;
-    private void TransparencyCheck()
+   /*private void TransparencyCheck()
     {
         if(changeTransparency)
         {
@@ -158,7 +158,7 @@ public class CameraController : MonoBehaviour
         }
 
     }
-    private void FullTransparency()
+   // private void FullTransparency()
     {
         if(changeTransparency)
         {
@@ -171,5 +171,5 @@ public class CameraController : MonoBehaviour
                 targetRend.sharedMaterial.color = temp;
             }
         }
-    }
+    }*/
 }

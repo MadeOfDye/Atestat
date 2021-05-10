@@ -1,0 +1,2 @@
+F:\SelfGames\Atestat\RPG Trial\obj\Debug\UnityEditor.TestRunner.csprojAssemblyReference.cache
+F:\SelfGames\Atestat\RPG Trial\obj\Debug\UnityEditor.TestRunner.csproj.CoreCompileInputs.cache

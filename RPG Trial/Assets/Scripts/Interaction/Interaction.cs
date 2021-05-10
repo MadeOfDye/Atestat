@@ -7,7 +7,7 @@ public class Interaction : MonoBehaviour
 	public Transform viewCamera = null;
 	[SerializeField] private float interactionDistance = 5f;
 	[SerializeField] private LayerMask layersToRaycast = 0;
-
+	[SerializeField] private PlayerInventory inti;
 	void Start()
 	{
 		viewCamera = Camera.main.transform;
@@ -16,13 +16,15 @@ public class Interaction : MonoBehaviour
 	
 	void Update()
 	{
-		if (Time.frameCount % 4 == 0)
-		{
+		//if (Time.frameCount % 4 == 0)
+		//{
 		if(data.interactible == true)
 		{
 			if(Input.GetKeyDown(KeyCode.E))
 			{
-				ManagerialTroubles.LoadNextScene();
+				if(data.HitTransform.CompareTag("Collectable"))
+				inti.Inti(data.HitTransform);
+			//	ManagerialTroubles.LoadNextScene();
 			}
 		}
 			RaycastHit? hit = DoRayCasting();
@@ -42,12 +44,12 @@ public class Interaction : MonoBehaviour
 				}
 			}
 		}
-	}
+	//}
 	private RaycastHit? DoRayCasting()
 	{
 		Ray ray = new Ray(viewCamera.position, viewCamera.forward);
 		RaycastHit hit;
-		bool hashit = Physics.SphereCast(ray, 2.3f, out hit, interactionDistance, layersToRaycast);
+		bool hashit = Physics.SphereCast(ray, 5f, out hit, interactionDistance, layersToRaycast);
 		if (hashit)
 		{
 			return hit;

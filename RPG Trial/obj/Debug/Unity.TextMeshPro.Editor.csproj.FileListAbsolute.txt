@@ -1,0 +1,2 @@
+F:\SelfGames\Atestat\RPG Trial\obj\Debug\Unity.TextMeshPro.Editor.csprojAssemblyReference.cache
+F:\SelfGames\Atestat\RPG Trial\obj\Debug\Unity.TextMeshPro.Editor.csproj.CoreCompileInputs.cache

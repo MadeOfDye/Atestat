@@ -21,6 +21,7 @@ De daugat vizual primar
 de adaugat secundar
 
 -momentum
+-g acceleration
 -linear drag
 -platforms(moving or otherwise)
 -ui gfx
@@ -41,7 +42,7 @@ de reparat:
 
 ///
 in sumar jocul se desfasoara pe mai multe nivele , telul final este sa colectezi un obiect de la finalul nivelului(temporar?)
-Nvm ii un RPG deci tre sa omori ceva
+Nvm ii un RPG deci tre sa omori ceva,deci tre sa omori un inamic la final,sau sa ajungi undeva(temporar)
 ///
 
 https://www.youtube.com/watch?v=HwdweCX5aMI&ab_channel=GameDevGuide

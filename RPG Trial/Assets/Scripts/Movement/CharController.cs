@@ -5,11 +5,13 @@ using UnityEngine;
 public class CharController : MonoBehaviour
 {
     public Transform cam = null;
+    Animator animator;
 
     private void Start()
     {     
        cam = Camera.main.transform;
         boxCol = GetComponent<BoxCollider>();
+        animator = GetComponentInChildren<Animator>();
     }
     private void Update()
     { 
@@ -21,12 +23,13 @@ public class CharController : MonoBehaviour
         if (Mathf.Abs(_forward) < 1 && Mathf.Abs(_sideways) < 1)
         {
             forward = Vector3.zero;
+            animator.SetFloat("Blend", 0);
             return;
         }
         Rotation();
         CalculatingForward();
         Movement();
-        TheCollision();
+       TheCollision();
     }
     #region movement
     //Setting the raw input values into float Variables
@@ -84,6 +87,7 @@ public class CharController : MonoBehaviour
     void Movement()
     {
         movement = forward * crackSpeed * Time.deltaTime;
+        animator.SetFloat("Blend", 1);
         transform.position += movement;
     }
     #endregion
@@ -92,20 +96,34 @@ public class CharController : MonoBehaviour
     #region gravity
     //Setting the boolean and applying gravity
     private bool grounded = false;
-    public float gravity = 12.5f;
+    public float gravity = 20f;
     private float verticalVelocity;
+    private bool activated;
+    public float acceleration = 10f; 
     void Gravity()
     {
         if (grounded == false)
         {
-            gravity = 12.5f;
-            transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
-           crackSpeed = methSpeed;
+            if (activated == false)
+            {
+                gravity = 20f;
+                activated = true;
+            }
+            if(Time.frameCount %15 == 0)
+            {
+              gravity += acceleration;
+            }
+
+           transform.position -= new Vector3(0, gravity * Time.deltaTime, 0);
+           // transform.position = Vector3.Lerp(transform.position, transform.position - new Vector3(0, gravity * Time.deltaTime, 0), smoothFall * Time.deltaTime);
+           crackSpeed = methSpeed-methSpeed/4;
         }
         else
         {
+            activated = false;
             gravity = 0;
            crackSpeed = methSpeed;
+
             return;
         }
     }
@@ -116,7 +134,9 @@ public class CharController : MonoBehaviour
     public float groundPoint = 5f;
     void CheckGround()
     {
+        
         Ray ray = new Ray(transform.TransformPoint(liftPoint), Vector3.down);
+        Debug.DrawRay(transform.TransformPoint(liftPoint), Vector3.down,Color.red);
         RaycastHit tempHit = new RaycastHit();
         if (Physics.SphereCast(ray, 0.3f, out tempHit, groundPoint, eButPlayer))
         {
@@ -180,7 +200,7 @@ public class CharController : MonoBehaviour
     //Leave the ground and go up in the air hopefully
     private bool jumped = false;
     public float jumpForce = 0.6f;
-    public float jumpSpeed = 0.5f;
+private float maxHeight;
     private void TehJumpCheck()
     {
         bool canJump = false;
@@ -189,28 +209,32 @@ public class CharController : MonoBehaviour
 
    if (grounded && canJump)
         {
-            jumpHeight = transform.position + Vector3.up * jumpForce;
+            maxHeight = transform.position.y + height * 4;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StartCoroutine(TehActualJump());
             }
         }
     }
-    Vector3 jumpHeight;
-    Vector3 refVel;
+   
     public float jumpLength;
+    public float jumpHeight = 0f;
+    public float yumpSpeed = 3f; 
     IEnumerator TehActualJump()
     {
-        while ((jumpHeight.y - transform.position.y) > 5f)
+        while ((maxHeight - transform.position.y) >jumpHeight)
         {
-            //Debug.Log(jumpHeight.y - transform.position.y);
-             transform.position = Vector3.SmoothDamp(transform.position,jumpHeight + forward * jumpLength, ref refVel, jumpSpeed * Time.deltaTime);
-           // transform.position +=forward + Vector3.up * jumpForce;
-            yield return null;
+           // Debug.Log("doing it");
+          // Debug.Log("The max Height" + maxHeight);
+           Debug.Log((maxHeight - transform.position.y));
+            Debug.Log(grounded);
+            //Debug.Log(transform.position);
+            // transform.position = Vector3.SmoothDamp(transform.position,jumpHeight + forward * jumpLength, ref refVel, jumpSpeed * Time.deltaTime);
+            transform.position += Vector3.up * jumpForce*yumpSpeed * Time.deltaTime ;
+            yield return new WaitUntil(() => Time.frameCount %2 ==0);
         }
     }
     #endregion
-
 }
 
 
